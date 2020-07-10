@@ -1,6 +1,6 @@
 ## Arduino Autonomous Car (slave device)
 
-This repository is part of my **TIPE 2021** about autonomous vehicules and how they interpret their environment.
+This repository is part of my **TIPE 2021** about autonomous vehicles and how they interpret their environment.
 
 It's a basic script that receives data from the master device ***(rpi 3 A+)*** and gives order to the motors *(the L298N to be exact)*
 
