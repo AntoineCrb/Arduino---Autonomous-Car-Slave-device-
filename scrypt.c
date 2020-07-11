@@ -6,10 +6,10 @@ const int EnableR = 5;
 const int HighR = 7;       //RIGHT SIDE MOTOR
 const int LowR = 6;
  
-const int D0 = 0;       //Raspberry pin 25
-const int D1 = 1;       //Raspberry pin 24
-const int D2 = 2;       //Raspberry pin 23
-const int D3 = 3;       //Raspberry pin 22
+const int D0 = 0;
+const int D1 = 1;
+const int D2 = 2;
+const int D3 = 3;
  
 int a,b,c,d,data;
  
@@ -44,7 +44,8 @@ void Stop()
   analogWrite(EnableR, 0);
 }
 
-void Turn(leftSpeed, rightSpeed) {
+void Turn(int leftSpeed, int rightSpeed) 
+{
   digitalWrite(HighL, LOW);
   digitalWrite(LowL, HIGH);
   analogWrite(EnableL, leftSpeed);
@@ -54,40 +55,40 @@ void Turn(leftSpeed, rightSpeed) {
   analogWrite(EnableR, rightSpeed);
 }
 
-void Forward(speed)
+void Forward(int mSpeed)
 {
-  Turn(speed, speed)
+  Turn(mSpeed, mSpeed);
 }
 
-void Backward(speed)
+void Backward(int mSpeed)
 {
   digitalWrite(HighL, HIGH);
   digitalWrite(LowL, LOW);
-  analogWrite(EnableL, speed);
+  analogWrite(EnableL, mSpeed);
  
   digitalWrite(HighR, HIGH);
   digitalWrite(LowR, LOW);
-  analogWrite(EnableR, speed);
+  analogWrite(EnableR, mSpeed);
 }
 
-void RightSpin(speed) {
+void RightSpin(int mSpeed) {
   digitalWrite(HighL, LOW);
   digitalWrite(LowL, HIGH);
-  analogWrite(EnableL, speed);
+  analogWrite(EnableL, mSpeed);
  
   digitalWrite(HighR, HIGH);
   digitalWrite(LowR, LOW);
-  analogWrite(EnableR, speed);
+  analogWrite(EnableR, mSpeed);
 }
 
-void LeftSpin(speed) {
+void LeftSpin(int mSpeed) {
   digitalWrite(HighL, HIGH);
   digitalWrite(LowL, LOW);
-  analogWrite(EnableL, speed);
+  analogWrite(EnableL, mSpeed);
  
   digitalWrite(HighR, LOW);
   digitalWrite(LowR, HIGH);
-  analogWrite(EnableR, speed);
+  analogWrite(EnableR, mSpeed);
 }
 
 void loop()
