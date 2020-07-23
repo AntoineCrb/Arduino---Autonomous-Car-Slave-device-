@@ -7,10 +7,11 @@ const int HighR = 7;       //RIGHT SIDE MOTOR
 const int LowR = 6;
  
 const int D0 = 0;
-const int D1 = 2;
-const int D2 = 3;
- 
-int a,b,c,data;
+const int D1 = 1;
+const int D2 = 2;
+const int D3 = 3;
+
+int a,b,c,d,data;
  
 void setup() {
 pinMode(EnableL, OUTPUT);      
@@ -24,6 +25,7 @@ pinMode(LowR, OUTPUT);
 pinMode(D0, INPUT_PULLUP);
 pinMode(D1, INPUT_PULLUP);
 pinMode(D2, INPUT_PULLUP);
+pinMode(D3, INPUT_PULLUP);
 }
  
 void Data()
@@ -31,8 +33,9 @@ void Data()
    a = digitalRead(D0);
    b = digitalRead(D1);
    c = digitalRead(D2);
- 
-   data = 4*c+2*b+a; // binary to decimal
+   d = digitalRead(D3);
+
+   data = 8*d+4*c+2*b+a; // binary to decimal
 }
  
 void Stop()
@@ -90,10 +93,13 @@ void LeftSpin(int mSpeed) {
 
 void loop()
 {
+
+  Turn(150,200);
+  return;
   Data();
   switch (data) {
     case 0:
-      Forward(255);
+      Stop();
       break;
     case 1:
       Forward(200);
@@ -107,8 +113,17 @@ void loop()
     case 4:
       LeftSpin(180);
       break;      
-    case 7:
-      Stop();
+    case 5: // right 1
+      Turn(200,180);
+      break;
+    case 6: // right 2
+      Turn(200,150);
+      break;
+    case 7: // left 1
+      Turn(180,200);
+      break;
+    case 8: // left 2
+      Turn(150,200);
       break;
   }
 }
