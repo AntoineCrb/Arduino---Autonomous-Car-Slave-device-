@@ -7,7 +7,7 @@ const int HighR = 7;       //RIGHT SIDE MOTOR
 const int LowR = 6;
  
 const int D0 = 0;
-const int D1 = 1;
+const int D1 = 4;
 const int D2 = 2;
 const int D3 = 3;
 
@@ -27,7 +27,8 @@ pinMode(D1, INPUT_PULLUP);
 pinMode(D2, INPUT_PULLUP);
 pinMode(D3, INPUT_PULLUP);
 }
- 
+
+// Get value from pins
 void Data()
 {
    a = digitalRead(D0);
@@ -93,37 +94,47 @@ void LeftSpin(int mSpeed) {
 
 void loop()
 {
-
-  Turn(150,200);
-  return;
   Data();
   switch (data) {
     case 0:
       Stop();
       break;
     case 1:
-      Forward(200);
+      Forward(180);
       break;
     case 2:
-      Backward(200);
+      Backward(180);
       break;
     case 3:
-      RightSpin(180);
+      RightSpin(160);
       break;
     case 4:
-      LeftSpin(180);
+      LeftSpin(160);
       break;      
     case 5: // right 1
-      Turn(200,180);
+      Turn(180,120);
       break;
     case 6: // right 2
-      Turn(200,150);
+      Turn(180,80);
       break;
-    case 7: // left 1
-      Turn(180,200);
+    case 7: // right 3
+      Turn(180,50);
       break;
-    case 8: // left 2
-      Turn(150,200);
+    case 8: // right 4
+      Turn(180,0);
       break;
+    case 9: // left 1
+      Turn(70,180);
+      break;
+    case 10: // left 2
+      Turn(40,180);
+      break;
+    case 11: // left 3
+      Turn(20,180);
+      break;
+    case 12: // left 4
+      Turn(0,180);
+      break;
+    default: Stop();
   }
 }
